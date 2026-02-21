@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SafePath - Your Safest Route, Community Verified</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+<script id="tailwind-config">
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            colors: {
+                "primary": "#ee2b8c",
+                "background-light": "#fdfbfd",
+                "background-dark": "#1a0b12",
+            },
+            fontFamily: {
+                "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+                "DEFAULT": "0.75rem",
+                "lg": "1.25rem",
+                "xl": "2rem",
+                "full": "9999px"
+            },
+            boxShadow: {
+                "glass": "0 8px 32px 0 rgba(238, 43, 140, 0.08)",
+            }
+        },
+    },
+}
+</script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-3xl">route</span>
+<span class="text-2xl font-black tracking-tight text-slate-900 dark:text-white">SafePath</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#map">Live Map</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#community">Community</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#sos">SOS Features</a>
+</nav>
+<div class="flex items-center gap-4">
+<button onclick="window.location.href='register.html'"
+class="bg-primary text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+    Start Your Safe Journey
+</button>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative py-20 lg:py-32 overflow-hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-8">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/40 dark:bg-white/5 backdrop-blur-md border border-primary/20 text-primary text-xs font-extrabold uppercase tracking-widest w-fit shadow-sm">
+<span class="material-symbols-outlined text-sm">verified_user</span>
+
+                        </div>
+<h1 class="text-5xl lg:text-7xl font-black leading-[1.1] tracking-tight text-slate-900 dark:text-white">
+                            Your Safest Route, <span class="text-primary">Community Verified</span>
+</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-lg leading-relaxed">
+                            Navigate with confidence using real-time insights from a community that cares about your safety. Find well-lit paths and avoid hazards instantly.
+                        </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 flex items-center gap-2">
+                                Download App <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-all">
+                                View Demo
+                            </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-4 bg-primary/20 rounded-xl blur-2xl group-hover:bg-primary/30 transition-all"></div>
+<div class="relative aspect-video lg:aspect-square bg-slate-200 rounded-xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800">
+<img class="w-full h-full object-cover" data-alt="A bright well-lit modern city street with pedestrians" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzfDOe-87em1BDRIZ3BPj9llgb8gaMPnt-HlQnndUY0UqCG03LCQ7l9hrNpN6uezOW3Cl46qyvvFg4bpBulePy0Epo8Kc3DUp3WF239CLs6VMGlQ2DAs_WEPf0tZtxJLSILz8hpSBlD5Vcas6xtR7bE_ONdrBKWOBWlsh6pmiAI_YrXiaQzqogNnbDF8YptTYmw7Psy9uz3jGPIGmRSmbuhhL9BW-Xj4-BckMWduCtO7X37jGmV0wP7uskaO4QwoFnJmLtyJqNe7Vz"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Safety Map Preview -->
+<div id="map" class="w-full h-[500px] rounded-xl shadow-lg"></div>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black text-slate-900 dark:text-white mb-4">Live Safety Map</h2>
+<p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">See real-time safety ratings for every street. Our community flags everything from poor lighting to active construction.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-3 shadow-glass relative overflow-hidden h-[650px] border border-white/20">
+<img class="w-full h-full object-cover rounded-lg opacity-80" data-alt="Stylized map showing pink safe route markers and street layouts" data-location="New York City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD46fR0X8NDlu85TvGJved3I5bqBYsCvpnlAdAG2gnGtxoWlLqEtvFSpMC0EBWBt1KnZZZmsb5tiikzUZ3YX3XabIqHYRSoylMJfNfQOm77O6i7B-CTyXRKElSbPrzFhVpj4zGQ6oIzzOXBRdoKo0azxdENP9Sy6Gb2jKrgFn5OHX33rHGca_v3OE2H-9tNLGlu5qch2f3LsX-GFbt0t5g9dN7wLsViXr4ELgbppvtUgUmyMs-4du6WSmj_hV_y1Byi2z2UafYYn6iE"/>
+<!-- UI Overlays for Map -->
+<div class="absolute top-10 left-10 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl p-5 rounded-2xl shadow-xl border border-white/40 dark:border-white/10 max-w-xs transition-all hover:scale-[1.02]">
+<div class="flex items-center gap-3 mb-4">
+<div class="size-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">lightbulb</span>
+</div>
+<div>
+<p class="font-bold text-sm">Well Lit Route</p>
+<p class="text-xs text-slate-500">Verified by 12 users</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-[2.5rem] p-3 shadow-glass relative overflow-hidden h-[650px] border border-white/20">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+<p class="text-[10px] text-right mt-1 text-primary font-bold">94% Safety Score</p>
+</div>
+<div class="absolute bottom-8 right-8 flex flex-col gap-2">
+<button class="size-12 bg-white dark:bg-slate-900 rounded-full shadow-lg flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="size-12 bg-white dark:bg-slate-900 rounded-full shadow-lg flex items-center justify-center hover:text-primary transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="size-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Community Ratings & Badges -->
+<section class="" id="community">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-1/2 flex flex-col gap-6">
+<h2 class="text-4xl font-black text-slate-900 dark:text-white">Earn While You Protect</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                            Our community is built on trust. Verified contributors earn badges, unlock exclusive features, and help thousands of people reach home safely every night.
+                        </p>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<div>
+<p class="font-bold">Verified Pathfinder</p>
+<p class="text-sm text-slate-500">Help 50+ users by reporting accurate route updates.</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">shield</span>
+<div>
+<p class="font-bold">Guardian Level 5</p>
+<p class="text-sm text-slate-500">The most trusted contributors in our safety ecosystem.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="lg:w-1/2 grid grid-cols-2 gap-6">
+<div class="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-[2rem] border border-white dark:border-white/10 shadow-glass hover:shadow-primary/20 transition-all hover:-translate-y-1 text-center flex flex-col items-center">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined text-3xl">military_tech</span>
+</div>
+<h3 class="font-bold text-lg">Top Contributor</h3>
+<p class="text-xs text-slate-500">Sarah Jenkins</p>
+<span class="mt-4 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-[10px] font-bold">2.4k Points</span>
+</div>
+<div class="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-[2rem] border border-white dark:border-white/10 shadow-glass hover:shadow-primary/20 transition-all hover:-translate-y-1 text-center flex flex-col items-center">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined text-3xl">workspace_premium</span>
+</div>
+<h3 class="font-bold text-lg">Route Master</h3>
+<p class="text-xs text-slate-500">Marco Rossi</p>
+<span class="mt-4 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-[10px] font-bold">1.8k Points</span>
+</div>
+<div class="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-[2rem] border border-white dark:border-white/10 shadow-glass hover:shadow-primary/20 transition-all hover:-translate-y-1 text-center flex flex-col items-center">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined text-3xl">star</span>
+</div>
+<h3 class="font-bold text-lg">Local Expert</h3>
+<p class="text-xs text-slate-500">Elena Gomez</p>
+<span class="mt-4 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-[10px] font-bold">5.1k Points</span>
+</div>
+<div class="bg-white/40 dark:bg-white/5 backdrop-blur-md p-8 rounded-[2rem] border border-white dark:border-white/10 shadow-glass hover:shadow-primary/20 transition-all hover:-translate-y-1 text-center flex flex-col items-center">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4">
+<span class="material-symbols-outlined text-3xl">volunteer_activism</span>
+</div>
+<h3 class="font-bold text-lg">Guardian</h3>
+<p class="text-xs text-slate-500">James Chen</p>
+<span class="mt-4 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-700 text-[10px] font-bold">900 Points</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- One-Tap SOS Section -->
+<section class="bg-primary/5" id="sos">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl rounded-[3rem] p-10 lg:p-20 shadow-glass border border-white dark:border-white/10 overflow-hidden relative">
+<div class="grid lg:grid-cols-2 gap-12 items-center relative z-10">
+<div class="flex flex-col gap-6">
+<h2 class="text-4xl lg:text-5xl font-black text-slate-900 dark:text-white">Help is One Tap Away</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                                In an emergency, every second counts. Our SOS feature alerts your emergency contacts and local authorities with your precise real-time location and a live audio feed.
+                            </p>
+<div class="flex flex-col gap-4 mt-4">
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800 p-4 rounded-xl">
+<span class="material-symbols-outlined text-primary">record_voice_over</span>
+<p class="text-sm font-semibold">Automatic Emergency Audio Recording</p>
+</div>
+<div class="flex items-center gap-4 bg-slate-50 dark:bg-slate-800 p-4 rounded-xl">
+<span class="material-symbols-outlined text-primary">share_location</span>
+<p class="text-sm font-semibold">Live Location Sharing with Trusted Contacts</p>
+</div>
+</div>
+</div>
+<div class="flex justify-center">
+<button class="relative group">
+<div class="absolute inset-0 bg-primary rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition-opacity"></div>
+<div class="relative size-64 lg:size-80 rounded-full bg-gradient-to-tr from-primary to-[#ff5db1] flex flex-col items-center justify-center text-white shadow-[0_0_80px_-10px_rgba(238,43,140,0.5)] hover:scale-105 transition-all duration-500 active:scale-95 group-hover:rotate-3">
+<span class="material-symbols-outlined text-7xl lg:text-9xl mb-2">emergency</span>
+<span class="text-2xl lg:text-3xl font-black tracking-widest uppercase">SOS</span>
+<span class="text-xs font-bold mt-2 opacity-80">HOLD TO ACTIVATE</span>
+</div>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="text-center">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+<h2 class="text-4xl font-black mb-8">Ready to walk with confidence?</h2>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/30">
+                        Join SafePath Now
+                    </button>
+<button class="bg-slate-900 dark:bg-white dark:text-slate-900 text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-slate-800 transition-all shadow-xl">
+                        App Store
+                    </button>
+</div>
+<p class="mt-8 text-slate-500 font-medium">Free forever for community members.</p>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 mb-12">
+<div class="col-span-2 lg:col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-2xl">route</span>
+<span class="text-xl font-black tracking-tight">SafePath</span>
+</div>
+<p class="text-slate-500 text-sm max-w-xs mb-6">
+                        Making cities safer through community intelligence and real-time data sharing.
+                    </p>
+<div class="flex gap-4">
+<a class="size-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">social_leaderboard</span>
+</a>
+<a class="size-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4 uppercase tracking-wider text-slate-400">Product</h4>
+<ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Safety Map</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">SOS Alerts</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Community Features</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4 uppercase tracking-wider text-slate-400">Company</h4>
+<ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-sm mb-4 uppercase tracking-wider text-slate-400">Support</h4>
+<ul class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+<li><a class="hover:text-primary transition-colors" href="#">Help Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Safety Tips</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-400">
+                © 2024 SafePath Technologies Inc. All rights reserved.
+            </div>
+</div>
+</footer>
+</body></html>

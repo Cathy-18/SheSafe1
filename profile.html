@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>User Profile &amp; Community Badges</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ee2b8c",
+                        "background-light": "#f8f6f7",
+                        "background-dark": "#221019",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="max-w-[1200px] mx-auto px-4 py-8 md:px-10">
+<!-- Header Navigation -->
+<header class="flex items-center justify-between mb-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-white">
+<span class="material-symbols-outlined text-2xl">shield_person</span>
+</div>
+<h1 class="text-2xl font-bold tracking-tight">Guardian Profile</h1>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">share</span>
+</button>
+<button class="flex items-center justify-center p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">settings</span>
+</button>
+</div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Profile Card & Stats -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Profile Card -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center">
+<div class="relative mb-4">
+<div class="w-32 h-32 rounded-full border-4 border-primary p-1 bg-white dark:bg-slate-800">
+<div class="w-full h-full rounded-full bg-cover bg-center" data-alt="Professional portrait of a female user with a friendly smile" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1ntP9jNEEmg3sZSyOL-v33R6shln29LcNl2ouXIxqphIRiuRuIASE9a96MTOncFyI5qZ5BKTpZG60SSXCl581NBfTQV-xKOBO-shxlrauwW06PBdmC_QoGy0qSxucYAhpwmXuhd3nexHhahb1AEX8eIGDVthcqIaFpZWnQM6B3H9P6mWz6-Um-ELmOQop-XPu82dPj9UsESCREU1S6Bm1-rrTcGgbIUXT3AferdAcQJaU_gLwOqatftxKmunMduy2wrrjWKAI_Ro8')"></div>
+</div>
+<div class="absolute bottom-1 right-1 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full border-2 border-white dark:border-slate-800">
+                            LVL 12
+                        </div>
+</div>
+<h2 class="text-xl font-bold">Alex Guardian</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4">@alex_safety • Joined June 2023</p>
+<p class="text-slate-600 dark:text-slate-300 text-sm italic mb-6">"Dedicated to keeping our neighborhood paths safe and accessible for everyone."</p>
+<button class="w-full py-2.5 bg-primary text-white font-semibold rounded-lg hover:opacity-90 transition-opacity">
+                        Edit Profile
+                    </button>
+</div>
+<!-- Stats Cards -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-2 text-primary mb-2">
+<span class="material-symbols-outlined text-xl">stars</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Points</span>
+</div>
+<p class="text-2xl font-bold">2,450</p>
+<p class="text-emerald-500 text-xs font-medium flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12% this week
+                        </p>
+</div>
+<div class="bg-white dark:bg-slate-800 rounded-xl p-5 shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-2 text-primary mb-2">
+<span class="material-symbols-outlined text-xl">map</span>
+<span class="text-xs font-semibold uppercase tracking-wider">Routes</span>
+</div>
+<p class="text-2xl font-bold">128</p>
+<p class="text-emerald-500 text-xs font-medium flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">verified</span> 98% accuracy
+                        </p>
+</div>
+</div>
+<!-- Progress Section -->
+<div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex justify-between items-end mb-4">
+<div>
+<h3 class="font-bold text-slate-800 dark:text-slate-100">Level Progress</h3>
+<p class="text-xs text-slate-500">Elite Guardian Status</p>
+</div>
+<span class="text-sm font-bold text-primary">750 / 1,000 XP</span>
+</div>
+<div class="w-full h-3 bg-slate-100 dark:bg-slate-700 rounded-full overflow-hidden mb-3">
+<div class="h-full bg-primary rounded-full" style="width: 75%;"></div>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400">Next milestone: 250 XP to Level 13</p>
+</div>
+</div>
+<!-- Right Column: Badges Grid -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Category: Community Milestones -->
+<section>
+<div class="flex items-center justify-between mb-4 px-2">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">military_tech</span>
+                            Community Milestones
+                        </h3>
+<a class="text-primary text-sm font-semibold hover:underline" href="#">View All</a>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Unlocked Badge 1 -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center transition-transform hover:scale-105">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-3xl">verified_user</span>
+</div>
+<p class="font-bold text-sm">Guardian</p>
+<p class="text-[10px] text-slate-500 mt-1">Earned Dec 2023</p>
+</div>
+<!-- Unlocked Badge 2 -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center transition-transform hover:scale-105">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-3xl">volunteer_activism</span>
+</div>
+<p class="font-bold text-sm">First Responder</p>
+<p class="text-[10px] text-slate-500 mt-1">Earned Jan 2024</p>
+</div>
+<!-- Locked Badge 1 -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center text-center opacity-60">
+<div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 mb-3">
+<span class="material-symbols-outlined text-3xl">lock</span>
+</div>
+<p class="font-bold text-sm text-slate-500">Local Hero</p>
+<p class="text-[10px] text-slate-400 mt-1">Reach 50 reports</p>
+</div>
+<!-- Locked Badge 2 -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center text-center opacity-60">
+<div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 mb-3">
+<span class="material-symbols-outlined text-3xl">lock</span>
+</div>
+<p class="font-bold text-sm text-slate-500">Advocate</p>
+<p class="text-[10px] text-slate-400 mt-1">Invite 5 friends</p>
+</div>
+</div>
+</section>
+<!-- Category: Exploration -->
+<section>
+<div class="flex items-center justify-between mb-4 px-2">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">explore</span>
+                            Exploration
+                        </h3>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Unlocked Badge -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center transition-transform hover:scale-105">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-3xl">directions_run</span>
+</div>
+<p class="font-bold text-sm">Pathfinder</p>
+<p class="text-[10px] text-slate-500 mt-1">Earned Feb 2024</p>
+</div>
+<!-- Locked Badge -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center text-center opacity-60">
+<div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 mb-3">
+<span class="material-symbols-outlined text-3xl">lock</span>
+</div>
+<p class="font-bold text-sm text-slate-500">Map Legend</p>
+<p class="text-[10px] text-slate-400 mt-1">Map 500 miles</p>
+</div>
+<!-- Unlocked Badge -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center transition-transform hover:scale-105">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+</div>
+<p class="font-bold text-sm">Pioneer</p>
+<p class="text-[10px] text-slate-500 mt-1">Earned 2023</p>
+</div>
+<!-- Locked Badge -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center text-center opacity-60">
+<div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 mb-3">
+<span class="material-symbols-outlined text-3xl">lock</span>
+</div>
+<p class="font-bold text-sm text-slate-500">Globetrotter</p>
+<p class="text-[10px] text-slate-400 mt-1">Visit 3 cities</p>
+</div>
+</div>
+</section>
+<!-- Category: Activity -->
+<section>
+<div class="flex items-center justify-between mb-4 px-2">
+<h3 class="text-lg font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bolt</span>
+                            Activity
+                        </h3>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Unlocked Special Badge -->
+<div class="relative bg-white dark:bg-slate-800 p-4 rounded-xl shadow-md border-2 border-primary/20 flex flex-col items-center text-center transition-transform hover:scale-105 overflow-hidden">
+<div class="absolute -top-1 -right-1 bg-primary text-[8px] text-white px-2 py-0.5 transform rotate-12 font-bold uppercase">Rare</div>
+<div class="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center mb-3 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-3xl">dark_mode</span>
+</div>
+<p class="font-bold text-sm">Night Owl</p>
+<p class="text-[10px] text-primary font-medium mt-1">Active Night Safe</p>
+</div>
+<!-- Unlocked Badge -->
+<div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center transition-transform hover:scale-105">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-3">
+<span class="material-symbols-outlined text-3xl">calendar_today</span>
+</div>
+<p class="font-bold text-sm">Daily Streak</p>
+<p class="text-[10px] text-slate-500 mt-1">7 Days Active</p>
+</div>
+<!-- Locked Badge -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center text-center opacity-60">
+<div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 mb-3">
+<span class="material-symbols-outlined text-3xl">lock</span>
+</div>
+<p class="font-bold text-sm text-slate-500">Super Streak</p>
+<p class="text-[10px] text-slate-400 mt-1">30 Days Active</p>
+</div>
+<!-- Locked Badge -->
+<div class="bg-slate-50 dark:bg-slate-800/50 p-4 rounded-xl border border-dashed border-slate-200 dark:border-slate-700 flex flex-col items-center text-center opacity-60">
+<div class="w-16 h-16 bg-slate-200 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400 mb-3">
+<span class="material-symbols-outlined text-3xl">lock</span>
+</div>
+<p class="font-bold text-sm text-slate-500">Early Bird</p>
+<p class="text-[10px] text-slate-400 mt-1">5am Reports</p>
+</div>
+</div>
+</section>
+<!-- Activity Timeline Placeholder -->
+<section class="bg-primary/5 dark:bg-primary/10 rounded-xl p-6 border border-primary/10">
+<h3 class="font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                        Recent Achievements
+                    </h3>
+<div class="space-y-4">
+<div class="flex gap-4">
+<div class="w-1 bg-primary rounded-full"></div>
+<div>
+<p class="text-sm font-semibold">Earned 'Night Owl' Badge</p>
+<p class="text-xs text-slate-500">Yesterday at 11:45 PM • Contributing to night safety</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-1 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+<div>
+<p class="text-sm font-semibold">Verified Route: Downtown Plaza</p>
+<p class="text-xs text-slate-500">2 days ago • +25 Safety Points</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</body></html>
